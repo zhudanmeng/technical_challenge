@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>TensorFlow.js Speech Commands Model Demo</title>
+  <link href="style.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+
+  <div class="tutorials-panel">
+    <a href="index.html">
+      <div class="go-back">
+        Go back
+      </div>
+    </a>
+  </div>
+
+  <div class='main-model'>
+    <div class="settings">
+      <span style="display:none">Prob. threshold:</span>
+      <input style="display:none" class="settings" size="5" id="proba-threshold" value="0.75">
+    </div>
+  </div>
+  <div class="footer" style="display: none;">
+    <textarea id="status-display" style="display: none" cols="80" readonly="true"></textarea>
+  </div>
+  <div class="transfer-learn-section">
+    <div id="sectionCheck">
+      <h3>Model</h3>
+      <hr />
+      <input id="transfer-model-name" size="20" placeholder="model name">
+      <select id="duration-multiplier">
+        <option value="1">Duration x1</option>
+        <option value="2">Duration x2</option>
+      </select>
+
+      <input type="checkbox" id="include-audio-waveform">
+      <span id="include-audio-waveform-label">Include audio waveform</span>
+    </div>
+
+
+    <div class="main-display-flex">
+      <div id="collect-words">
+        <div id="collect-words-header">
+          <div class="word-div-container">
+            <div class="word-div-container-header">
+              <input value="Background Noise" disabled="true" class="noise-disabled"/>
+            </div>
+            <div class="word-div-container-footer">
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <button id="build-learn-words">Add new class</button>
+        </div>
+      </div>
+
+
+      <div class="build-model-modal">
+        <div class="word-div-container-header">
+          <h3 class="model-training-title">Model Training</h3>
+        </div>
+        <div class="word-div-container-footer">
+          <button id="enter-learn-words" class="button-sample">
+            
+            Build model
+            <span class="material-symbols-outlined">
+              play_arrow
+              </span>
+          </button>
+          <button id="start-transfer-learn" disabled="true" class="button-sample">
+            Train model
+            <span class="material-symbols-outlined">
+              model_training
+            </span>
+          </button>
+        </div>
+      </div>
+
+      <div class="build-model-modal">
+        <div class="word-div-container-header preview-container">
+          <h3 class="model-training-title">Preview</h3>
+          <button id="save-transfer-model" class="export-button" disabled="true">
+            Export model
+            <span class="material-symbols-outlined">
+              upgrade
+            </span>
+          </button>
+        </div>
+        <div class="word-div-container-footer">
+
+          <div class="start-stop">
+            <button id="start" disabled="true" class="button-sample">
+              Start
+              <span class="material-symbols-outlined">
+                play_circle
+              </span>
+            </button>
+            <button id="stop" disabled="true" class="button-sample">
+              Stop
+              <span class="material-symbols-outlined">
+                stop_circle
+              </span>
+            </button>
+          </div>
+
+
+
+          <div id="candidate-words" class="candidate-words-hidden"></div>
+
+        </div>
+      </div>
+    </div>
+
+
+    <select id="saved-transfer-models">
+      <option value="1"></option>
+    </select>
+
+  </div>
+
+  <script src="index.js"></script>
+</body>
+
+</html>
