@@ -30,6 +30,9 @@ import * as SpeechCommands from '@tensorflow-models/speech-commands';
 import {DatasetViz, removeNonFixedChildrenFromWordDiv} from './dataset-vis';
 import {hideCandidateWords, logToStatusDisplay, plotPredictions, plotSpectrogram, populateCandidateWords, showCandidateWords} from './ui';
 
+// import { Storage } from '@google-cloud/storage';
+// import fs from 'fs.promises';
+
 const startButton = document.getElementById('start');
 const stopButton = document.getElementById('stop');
 const predictionCanvas = document.getElementById('prediction-canvas');
@@ -293,10 +296,6 @@ function createWordDivs(transferWords) {
     transferDurationMultiplier);
   return wordDivs;
 }
-
-
-
-
 
 
 
@@ -595,8 +594,26 @@ async function populateSavedTransferModelsSelect() {
   }
 }
 
+async function saveMetadata() {
+  let classList = []
+  classList.push(document.getElementById("bg-noise").value)
+  let classLabels = document.getElementsByClassName("word-input-label")
+  for (let i = 0; i < classLabels.length; i++) {
+    classList.push(classLabels[i].value)
+  }
+  let metadata = JSON.stringify({"wordLabels": classList})
+  console.log(metadata)
+  var a = document.createElement("a");
+  var file = new Blob([metadata], {type: "application/json"});
+  a.href = URL.createObjectURL(file);
+  a.download = "metadata.json";
+  a.click();
+
+}
+
 saveTransferModelButton.addEventListener('click', async () => {
   await transferRecognizer.save('downloads://test');
+  await saveMetadata();
   await populateSavedTransferModelsSelect();
   saveTransferModelButton.textContent = 'Model saved!';
   saveTransferModelButton.disabled = true;
