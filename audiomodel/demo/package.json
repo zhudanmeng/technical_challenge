@@ -9,8 +9,11 @@
     "node": ">=8.9.0"
   },
   "dependencies": {
+    "@google-cloud/storage": "^7.0.1",
     "@tensorflow-models/speech-commands": "file:../dist",
     "express": "^4.18.2",
+    "fs": "^0.0.1-security",
+    "fs.promises": "^0.1.2",
     "stats.js": "^0.17.0"
   },
   "scripts": {

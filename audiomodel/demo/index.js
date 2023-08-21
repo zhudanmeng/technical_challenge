@@ -612,7 +612,7 @@ async function saveMetadata() {
 }
 
 saveTransferModelButton.addEventListener('click', async () => {
-  await transferRecognizer.save('downloads://test');
+  await transferRecognizer.save('downloads://model');
   await saveMetadata();
   await populateSavedTransferModelsSelect();
   saveTransferModelButton.textContent = 'Model saved!';

@@ -657,8 +657,16 @@ async function populateSavedTransferModelsSelect() {
   }
 }
 
+async function saveMetadata() {
+  let classList = []
+  classList.append(document.getElementById("bg-noise").value)
+  classList.append()
+  let metadata = {"wordLabels": classList} 
+}
+
 saveTransferModelButton.addEventListener('click', async () => {
   await transferRecognizer.save();
+  await saveMetadata();
   await populateSavedTransferModelsSelect();
   saveTransferModelButton.textContent = 'Model saved!';
   saveTransferModelButton.disabled = true;
