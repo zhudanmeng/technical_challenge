@@ -4,7 +4,7 @@
 }
 
 body {
-  margin: 30px 0 0 30px;
+  margin: 30px 30px 0 30px;
   font: 400 11px system-ui;
   font-family: 'Google Sans';
   background-color: #E8EAED;
@@ -259,6 +259,17 @@ a {
 .go-back {
   font-family: 'Google Sans';
   background-color: white;
+  border-radius: 15px;
+  padding: 10px;
+  font-weight: 600;
+  color: black;
+  width: fit-content;
+  box-shadow: 0px 8px 2px -2px gray;
+}
+
+.model-loader {
+  font-family: 'Google Sans';
+  background-color: #f0e4a3;
   border-radius: 15px;
   padding: 10px;
   font-weight: 600;
